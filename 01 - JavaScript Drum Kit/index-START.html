@@ -58,7 +58,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  window.addEventListener('keydown', function (e) {
+  function playSound(e) {
     // console.log(e.keyCode);
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); //selects the audio
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); //selects the div on the page
@@ -66,12 +66,20 @@
     if (!audio) return; //if not a valid key, nothing happens
     audio.currentTime = 0; //restarts so we can hit same key over and over again
     audio.play();
-
-    
     key.classList.add('playing'); //add playing class to the key div and triggers the playing style
-    keys.forEach(key => key.addEventListener('transitioned', removeTransition));
-  });
+  }
 
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; //skip it if it's not a transform
+    // console.log(e.propertyName);
+    // console.log(this);
+    this.classList.remove('playing');
+  }
+  
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition)); //must listen on each of them
+  window.addEventListener('keydown', playSound);
 </script>
 
 
