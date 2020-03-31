@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hi!');
+
+    // Interpolated
+    console.log('hi, %s', 'slim');
+    // Styled
+    console.log('%c come and get your love', 'font-size:50px');
+
+    // warning!
+    console.warn('Check yourself, before you wreck yourself');
+
+    // Error :|
+    console.error('Time to debug!');
+
+    // Info
+
+    // Testing
+    console.assert(1 === 2, 'you messed up');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+
+    // Grouping together
+
+    // counting
+
+    // timing
+
+  </script>
+</body>
+</html>
